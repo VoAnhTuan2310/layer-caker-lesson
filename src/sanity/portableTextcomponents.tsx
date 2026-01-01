@@ -5,20 +5,24 @@ import { urlFor } from "@/sanity/lib/image";
 export const components: PortableTextComponents = {
   types: {
     image: ({ value }) => {
+      // Nếu không có ảnh thì không render gì cả
       if (!value?.asset?._ref) {
         return null;
       }
+      
       return (
-        <Image
-          className="rounded-lg not-prose w-full h-auto my-8"
-          src={urlFor(value)
-            .width(800)
-            .auto("format")
-            .url()}
-          alt={value.alt || "Post image"}
-          width={800}
-          height={450}
-        />
+        <div className="my-8 relative rounded-lg overflow-hidden">
+             <Image
+              className="object-cover"
+              src={urlFor(value)
+                .width(800)
+                .auto("format")
+                .url()}
+              alt={value.alt || "Post image"}
+              width={800}
+              height={500}
+            />
+        </div>
       );
     },
   },

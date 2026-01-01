@@ -1,4 +1,8 @@
 @import "tailwindcss";
+
 @plugin "@tailwindcss/typography";
-@tailwind components;
-@tailwind utilities;
+
+/* Chỉ định thư mục chứa code để Tailwind tô màu */
+@source "../components";
+@source "../sanity";
+@source "../app";

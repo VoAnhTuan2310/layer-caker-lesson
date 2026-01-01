@@ -1,12 +1,12 @@
 import { PortableText } from 'next-sanity'
 import Image from 'next/image'
 
-import { Author } from '@/component/author'
-import { Categories } from '@/component/categories'
-import { components } from '@/sanity/portableTextcomponents'
+import { Author } from '@/components/author'
+import { Categories } from '@/components/categories'
+import { components } from '@/sanity/portableTextComponents'
 import { POST_QUERYResult } from '@/sanity/types'
-import { PublishedAt } from '@/component/publishedAt'
-import { Title } from '@/component/title'
+import { PublishedAt } from '@/components/published-at'
+import { Title } from '@/components/title'
 import { urlFor } from '@/sanity/lib/image'
 
 export function Post(props: NonNullable<POST_QUERYResult>) {
@@ -29,6 +29,7 @@ export function Post(props: NonNullable<POST_QUERYResult>) {
             width={400}
             height={400}
             alt=""
+            className="rounded-lg shadow-md"
           />
         </figure>
       ) : null}

@@ -7,7 +7,6 @@ type AuthorProps = {
 }
 
 export function Author({ author }: AuthorProps) {
-  if (!author) return null;
   return author?.image || author?.name ? (
     <div className="flex items-center gap-2">
       {author?.image ? (
