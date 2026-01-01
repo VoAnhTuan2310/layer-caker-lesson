@@ -3,7 +3,6 @@ import Image from 'next/image'
 
 import { Author } from '@/components/author'
 import { Categories } from '@/components/categories'
-import { components } from '@/sanity/portableTextComponents'
 import { POST_QUERYResult } from '@/sanity/types'
 import { PublishedAt } from '@/components/published-at'
 import { Title } from '@/components/title'
