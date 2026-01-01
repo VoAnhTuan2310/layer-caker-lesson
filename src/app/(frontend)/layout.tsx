@@ -1,5 +1,5 @@
 import "../globals.css";
-import { Header } from '@/components/header'
+import { Header } from '@/component/header'
 import { SanityLive } from '@/sanity/lib/live';
 
 export default function FrontendLayout({
