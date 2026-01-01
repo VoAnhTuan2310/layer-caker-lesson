@@ -7,5 +7,6 @@ export const POSTS_QUERY = defineQuery(`*[_type == "post" && defined(slug.curren
 
 // Lấy chi tiết 1 bài viết dựa trên slug (để vào trang đọc bài)
 export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slug][0]{
-  title, body, mainImage
+  title, body, mainImage,
+  author->{name, image}
 }`)

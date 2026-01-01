@@ -5,7 +5,7 @@ import { Author } from '@/component/author'
 import { Categories } from '@/component/categories'
 import { components } from '@/sanity/portableTextcomponents'
 import { POST_QUERYResult } from '@/sanity/types'
-import { PublishedAt } from '@/components/published-at'
+import { PublishedAt } from '@/component/publishedAt'
 import { Title } from '@/component/title'
 import { urlFor } from '@/sanity/lib/image'
 
