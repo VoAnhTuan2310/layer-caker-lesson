@@ -256,14 +256,28 @@ export type AllSanitySchemaTypes = Post | BlockContent | SanityImageCrop | Sanit
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)][0...12]{  _id, title, slug}
+// Query: *[_type == "post" && defined(slug.current)][0...12]{  _id,   title,   slug,  publishedAt,  mainImage}
 export type POSTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
+  publishedAt: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
 }>;
 // Variable: POST_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]{  title, body, mainImage,  author->{name, image}}
+// Query: *[_type == "post" && slug.current == $slug][0]{  title,  body,  mainImage,  publishedAt,  author->{name, image},  categories[]->{title}}
 export type POST_QUERYResult = {
   title: string | null;
   body: BlockContent | null;
@@ -280,6 +294,7 @@ export type POST_QUERYResult = {
     alt?: string;
     _type: "image";
   } | null;
+  publishedAt: string | null;
   author: {
     name: string | null;
     image: {
@@ -295,13 +310,16 @@ export type POST_QUERYResult = {
       _type: "image";
     } | null;
   } | null;
+  categories: Array<{
+    title: string | null;
+  }> | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)][0...12]{\n  _id, title, slug\n}": POSTS_QUERYResult;
-    "*[_type == \"post\" && slug.current == $slug][0]{\n  title, body, mainImage,\n  author->{name, image}\n}": POST_QUERYResult;
+    "*[_type == \"post\" && defined(slug.current)][0...12]{\n  _id, \n  title, \n  slug,\n  publishedAt,\n  mainImage\n}": POSTS_QUERYResult;
+    "*[_type == \"post\" && slug.current == $slug][0]{\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  author->{name, image},\n  categories[]->{title}\n}": POST_QUERYResult;
   }
 }
