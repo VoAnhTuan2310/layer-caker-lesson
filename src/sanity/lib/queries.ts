@@ -16,5 +16,5 @@ export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slu
   mainImage,
   publishedAt,
   author->{name, image},
-  categories[]->{title}
+  categories[]->{_id, title}
 }`)
