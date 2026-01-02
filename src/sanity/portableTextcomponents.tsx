@@ -4,26 +4,20 @@ import { urlFor } from "@/sanity/lib/image";
 
 export const components: PortableTextComponents = {
   types: {
-    image: ({ value }) => {
-      // Kiểm tra nếu không có dữ liệu ảnh
-      if (!value?.asset?._ref) {
-        return null;
-      }
-      
-      return (
-        <div className="my-8 relative rounded-lg overflow-hidden">
-             <Image
-              className="object-cover w-full h-auto"
-              src={urlFor(value)
-                .width(800)
-                .auto("format")
-                .url()}
-              alt={value.alt || "Post image"}
-              width={800}
-              height={500}
-            />
-        </div>
-      );
-    },
+    image: (props) =>
+      props.value ? (
+        <Image
+          className="rounded-lg not-prose w-full h-auto"
+          src={urlFor(props.value)
+            .width(600)
+            .height(400)
+            .quality(80)
+            .auto("format")
+            .url()}
+          alt={props?.value?.alt || ""}
+          width="600"
+          height="400"
+        />
+      ) : null,
   },
 };
