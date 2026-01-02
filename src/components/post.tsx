@@ -11,8 +11,6 @@ import { urlFor } from '@/sanity/lib/image'
 
 export function Post(props: NonNullable<POST_QUERYResult>) {
   const { title, author, mainImage, body, publishedAt, categories } = props;
-  
-
 
   return (
     <article className="grid lg:grid-cols-12 gap-y-12">
